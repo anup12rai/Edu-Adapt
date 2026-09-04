@@ -29,12 +29,8 @@ from routes.recommendation import recommendation_bp
 app = Flask(__name__)
 
 app.config.from_object(Config)
-
-# Initialize database
 db.init_app(app)
 
-
-# Register routes
 app.register_blueprint(auth_bp)
 app.register_blueprint(dashboard_bp)
 app.register_blueprint(subjects_bp)

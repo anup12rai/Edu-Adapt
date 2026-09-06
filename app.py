@@ -50,8 +50,6 @@ def home():
     <p>EduAdapt Backend is Running Successfully!</p>
     <p>Flask + MySQL Connected</p>
     """
-
-
 @app.route("/api/test")
 def test():
     return {

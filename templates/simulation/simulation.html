@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% block content %}<h1>Target GPA simulation</h1>
+<section class="grid two">
+    <article class="card">
+        <h2>Set your target</h2>
+        <p>This estimates the likelihood of reaching your target from the progress currently recorded in Eduapt. It is
+            guidance, not a grade forecast.</p>
+        <form method="post"><label>Target GPA (0-4)<input type="number" name="expected_gpa" min="0" max="4" step="0.01"
+                    required></label><button>Check my outlook</button></form>{% if result %}<div class="result"><b>Your
+                target: {{ result.target }} GPA</b>
+            <p>Based on {{ result.readiness }}% readiness, {{ result.completion }}% unit progress, and {{
+                result.completed }}/{{ result.total }} completed tasks, your current chance of reaching this target is
+                <b>{{ result.likelihood }}%</b>.</p><small>Complete topics, plan tasks, and record focus sessions to
+                improve the estimate.</small>
+        </div>{% endif %}
+    </article>
+    <article class="card">
+        <h2>Recent outlooks</h2>{% for item in history %}<div class="plan"><b>{{ item.expected_gpa }} GPA
+                target</b><span>{{ item.predicted_score }}% likelihood</span></div>{% else %}<p>No simulations yet.</p>
+        {% endfor %}
+    </article>
+</section>{% endblock %}

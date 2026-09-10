@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <p class="eyebrow">FOCUS SESSION</p>
+        <h1>Pomodoro</h1>
+        <p>Work without distractions for 25 minutes, then take a short break.</p>
+    </div>
+</div>
+<section class="timer-card">
+    <div id="timer">25:00</div>
+    <div class="timer-actions"><button id="start" type="button">Start focus</button><button id="reset" type="button"
+            class="secondary">Reset</button></div>
+    <form method="post" action="{{ url_for('pomodoro.complete') }}"><input type="hidden" name="minutes"
+            value="25"><label>Subject (optional)<select name="subject_id">
+                <option value="">General study</option>{% for subject in subjects %}<option value="{{ subject.id }}">{{
+                    subject.subject_name }}</option>{% endfor %}
+            </select></label><button>Record completed session</button></form>
+</section>
+<script>let seconds = 1500, timer; const label = document.querySelector('#timer'), draw = () => label.textContent = `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`; document.querySelector('#start').onclick = () => { if (timer) return; timer = setInterval(() => { if (seconds <= 0) { clearInterval(timer); timer = null; alert('Focus session complete!'); return } seconds--; draw() }, 1000) }; document.querySelector('#reset').onclick = () => { clearInterval(timer); timer = null; seconds = 1500; draw() }; draw();</script>
+{% endblock %}

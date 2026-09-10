@@ -1,0 +1,29 @@
+{% extends 'base.html' %}{% block content %}<h1>Learning analytics</h1>
+<section class="metrics">
+    <article><b>{{ summary.readiness }}%</b><span>Growth score</span></article>
+    <article><b>{{ (summary.completed / summary.total * 100)|round|int if summary.total else 0 }}%</b><span>Task
+            completion</span></article>
+    <article><b>{{ summary.minutes }}</b><span>Weekly focus minutes</span></article>
+    <article><b>{{ data.weekly[-1].day if data.weekly else '-' }}</b><span>Best day</span></article>
+</section>
+<section class="card">
+    <h2>Subject risk breakdown</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Subject</th>
+                <th>Completion</th>
+                <th>Risk</th>
+                <th>Recommendation</th>
+            </tr>
+        </thead>
+        <tbody>{% for row in data.risks %}<tr>
+                <td>{{ row.subject_name }}</td>
+                <td>{{ row.completion|round|int }}%</td>
+                <td>{{ row.risk }}</td>
+                <td>{{ row.recommendation }}</td>
+            </tr>{% else %}<tr>
+                <td colspan="4">Add subjects to see risk guidance.</td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</section>{% endblock %}

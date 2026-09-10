@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "liveServer.settings.port": 5501
+=======
+    "postman.settings.dotenv-detection-notification-visibility": false
+>>>>>>> 1650dd9 (eduadapt project)
 }

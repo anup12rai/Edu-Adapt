@@ -1,6 +1,7 @@
 import re
 
 
+<<<<<<< HEAD
 def validate_email(email):
     """
     Validate email address.
@@ -44,3 +45,11 @@ def validate_positive_number(value):
         return float(value) >= 0
     except (ValueError, TypeError):
         return False
+=======
+def valid_email(value):
+    return bool(re.fullmatch(r'[^@\s]+@[^@\s]+\.[^@\s]+', value or ''))
+
+
+def one_of(value, options, default):
+    return value if value in options else default
+>>>>>>> 1650dd9 (eduadapt project)

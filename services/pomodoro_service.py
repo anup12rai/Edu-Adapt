@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from utils.db import execute_query
 from utils.helper import success_response, error_response
 
@@ -68,3 +69,7 @@ def get_study_sessions(user_id):
         "Study sessions retrieved.",
         sessions or []
     )
+=======
+from utils.db import execute
+def record(user_id, subject_id, minutes): return execute('INSERT INTO study_sessions (user_id,subject_id,duration) VALUES (%s,%s,%s)', (user_id, subject_id or None, minutes))
+>>>>>>> 1650dd9 (eduadapt project)

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Calendar</h1>
+        <p>Review your scheduled online plan and download a printable offline snapshot.</p>
+    </div>
+    <div class="actions"><a class="button secondary" href="{{ url_for('calendar.download',days=7) }}">Download 1-week
+            PDF</a><a class="button" href="{{ url_for('calendar.download',days=30) }}">Download 1-month PDF</a></div>
+</div>
+<section class="card">{% for task in tasks %}<div class="plan"><b>{{ task.due_date }}</b><span>{{ task.title }} · {{
+            task.priority }}</span></div>{% else %}<p>Generate today’s plan to create scheduled study tasks.</p>{%
+    endfor %}</section>{% endblock %}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from . import db
 from datetime import datetime
 
@@ -13,3 +14,8 @@ class User(db.Model):
 
     subjects = db.relationship("Subject", backref="user", lazy=True)
     tasks = db.relationship("Task", backref="user", lazy=True)
+=======
+from dataclasses import dataclass
+@dataclass
+class User: id: int; full_name: str; email: str
+>>>>>>> 1650dd9 (eduadapt project)

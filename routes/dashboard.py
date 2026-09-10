@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Blueprint, jsonify
 from models.user import User
 from models.subject import Subject
@@ -35,3 +36,13 @@ def dashboard(user_id):
             "total_study_sessions": sessions
         }
     })
+=======
+from flask import Blueprint, render_template, session
+from services.dashboard_service import summary
+from services.planner_service import plan
+from utils.helper import login_required
+bp=Blueprint('dashboard',__name__,url_prefix='/dashboard')
+@bp.route('/')
+@login_required
+def index(): return render_template('dashboard/dashboard.html', summary=summary(session['user_id']), plan=plan(session['user_id'])[:3])
+>>>>>>> 1650dd9 (eduadapt project)

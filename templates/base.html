@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}EduAdapt{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/subjects.css') }}">{% block head %}{% endblock %}
+</head>
+
+<body>
+    {% if session.user_id %}<nav><a class="brand" href="{{ url_for('dashboard.index') }}">EduAdapt</a>
+        <div class="navlinks"><a href="{{ url_for('profile.index') }}">Profile</a>
+            <form method="post" action="{{ url_for('auth.logout') }}"><button class="link">Sign out</button></form>
+        </div>
+    </nav>
+    <div class="app-shell">
+        <aside>
+            <h2>Hello, {{ session.user_name.split(' ')[0] }}</h2>
+            <form method="post" action="{{ url_for('planner.generate') }}"><button class="wide">Generate today's
+                    plan</button></form><a class="{{ 'active' if request.endpoint == 'dashboard.index' else '' }}"
+                href="{{ url_for('dashboard.index') }}">Dashboard</a><a
+                class="{{ 'active' if request.endpoint.startswith('subject.') else '' }}"
+                href="{{ url_for('subject.index') }}">Subjects</a><a
+                class="{{ 'active' if request.endpoint == 'planner.index' else '' }}"
+                href="{{ url_for('planner.index') }}">Today's plan</a><a
+                class="{{ 'active' if request.endpoint.startswith('pomodoro.') else '' }}"
+                href="{{ url_for('pomodoro.index') }}">Pomodoro</a><a
+                class="{{ 'active' if request.endpoint == 'analytics.index' else '' }}"
+                href="{{ url_for('analytics.index') }}">Analytics</a><a
+                class="{{ 'active' if request.endpoint == 'calendar.index' else '' }}"
+                href="{{ url_for('calendar.index') }}">Calendar</a><a
+                class="{{ 'active' if request.endpoint == 'simulation.index' else '' }}"
+                href="{{ url_for('simulation.index') }}">Simulation</a>
+            <section class="side-card"><span>Semester progress</span><b>{{ side_summary.completion }}%</b><small>{{
+                    side_summary.completed }}/{{ side_summary.total }} tasks done</small></section>
+            <section class="side-card"><span>Active subject</span><b>{{ side_data.active_subject.subject_name if
+                    side_data.active_subject else 'Add a subject' }}</b><small>{{ side_data.active_subject.priority if
+                    side_data.active_subject else 'Start your semester' }}</small></section>
+            <section class="side-card"><span>Subject risk</span><b>{{ side_summary.risk }}%</b><small>Keep your plan
+                    moving</small></section>
+        </aside>{% endif %}
+        <main class="container">{% with messages=get_flashed_messages(with_categories=true) %}{% for category,message in
+            messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endwith %}{% block content
+            %}{% endblock %}</main>{% if session.user_id %}
+    </div>{% endif %}
+</body>
+
+</html>

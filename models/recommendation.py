@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from . import db
 from datetime import datetime
 
@@ -13,3 +14,8 @@ class Recommendation(db.Model):
 
     created_at = db.Column(db.DateTime,
                            default=datetime.utcnow)
+=======
+from dataclasses import dataclass
+@dataclass
+class Recommendation: id: int; user_id: int; recommendation: str
+>>>>>>> 1650dd9 (eduadapt project)

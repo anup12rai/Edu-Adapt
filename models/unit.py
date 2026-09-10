@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from . import db
 
 class Unit(db.Model):
@@ -13,3 +14,8 @@ class Unit(db.Model):
     completion = db.Column(db.Float, default=0)
 
     topics = db.relationship("Topic", backref="unit", lazy=True)
+=======
+from dataclasses import dataclass
+@dataclass
+class Unit: id: int; subject_id: int; unit_name: str; completion: float = 0
+>>>>>>> 1650dd9 (eduadapt project)

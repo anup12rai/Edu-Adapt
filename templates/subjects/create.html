@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block content %}<section class="form-card">
+    <h1>Add a subject</h1>
+    <form method="post"><label>Subject name<input name="subject_name" required></label><label>Credits<input
+                type="number" name="credits" min="0" value="0"></label><label>Priority<select name="priority">
+                <option>High</option>
+                <option selected>Medium</option>
+                <option>Low</option>
+            </select></label><button>Save subject</button></form>
+</section>{% endblock %}

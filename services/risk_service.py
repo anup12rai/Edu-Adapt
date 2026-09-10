@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from utils.db import execute_query
 from utils.helper import success_response
 
@@ -115,3 +116,7 @@ def get_user_risks(user_id):
         "Risk analysis completed.",
         results
     )
+=======
+from services.dashboard_service import summary
+def risk(user_id): return summary(user_id)['risk']
+>>>>>>> 1650dd9 (eduadapt project)

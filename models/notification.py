@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from . import db
 from datetime import datetime
 
@@ -16,3 +17,8 @@ class Notification(db.Model):
 
     created_at = db.Column(db.DateTime,
                            default=datetime.utcnow)
+=======
+from dataclasses import dataclass
+@dataclass
+class Notification: id: int; user_id: int; message: str; is_read: bool = False
+>>>>>>> 1650dd9 (eduadapt project)

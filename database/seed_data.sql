@@ -1,0 +1,1 @@
+-- Optional sample data. Register through the app first; user-owned records are created from the interface.

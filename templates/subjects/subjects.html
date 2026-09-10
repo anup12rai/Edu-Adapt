@@ -1,0 +1,19 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <p class="eyebrow">YOUR SEMESTER</p>
+        <h1>Subjects</h1>
+        <p>Import a syllabus once, then tailor every unit and topic to your study needs.</p>
+    </div><a class="button secondary" href="{{ url_for('subject.create') }}">Add custom subject</a>
+</div>
+<section class="import-card">
+    <div><b>TU · BCA · Fourth Semester</b>
+        <p>Imports 6 subjects, each with starter units and topics. You can edit everything afterward.</p>
+    </div>
+    <form method="post" action="{{ url_for('subject.import_tu_bca_4') }}"><button>Import semester</button></form>
+</section>
+<div class="grid three">{% for subject in subjects %}<a class="card subject"
+        href="{{ url_for('subject.details',subject_id=subject.id) }}"><span class="pill {{ subject.priority|lower }}">{{
+            subject.priority }}</span>
+        <h2>{{ subject.subject_name }}</h2>
+        <p>{{ subject.credits }} credit hours</p>
+    </a>{% else %}<p>Import your semester or add your first custom subject.</p>{% endfor %}</div>{% endblock %}

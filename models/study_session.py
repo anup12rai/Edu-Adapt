@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from . import db
 from datetime import datetime
 
@@ -16,3 +17,8 @@ class StudySession(db.Model):
 
     session_date = db.Column(db.DateTime,
                              default=datetime.utcnow)
+=======
+from dataclasses import dataclass
+@dataclass
+class StudySession: id: int; user_id: int; subject_id: int = None; duration: int = 0
+>>>>>>> 1650dd9 (eduadapt project)

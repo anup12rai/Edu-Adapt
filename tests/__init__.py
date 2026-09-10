@@ -1,0 +1,1 @@
+"""Edu-Adapt test package."""

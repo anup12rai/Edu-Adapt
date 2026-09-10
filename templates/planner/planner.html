@@ -1,0 +1,27 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <p class="eyebrow">ADAPTIVE WORKFLOW</p>
+        <h1>Today's plan</h1>
+        <p>Expected time guides the plan; only a completed Pomodoro session adds to weekly focus minutes.</p>
+    </div>
+    <form method="post" action="{{ url_for('planner.generate') }}"><button>{{ "Generate more plan" if generated else
+            "Generate today's plan" }}</button></form>
+</div>
+<section class="card">
+    <h2>To do</h2>{% for item in plan %}<div class="plan todo">
+        <form method="post" action="{{ url_for('task.toggle',task_id=item.task.id) }}"><button class="checkbox"
+                aria-label="Complete task">✓</button></form>
+        <div><b>{{ item.task.title }}</b>
+            <p>Expected study time: {{ item.suggested_minutes }} minutes · {{ item.task.priority }} priority</p>
+        </div>
+    </div>{% else %}<p>No active items. Generate a plan from your unfinished syllabus topics.</p>{% endfor %}
+</section>
+<section class="card done-section">
+    <h2>Done today</h2>{% for item in done %}<div class="plan todo">
+        <form method="post" action="{{ url_for('task.toggle',task_id=item.task.id) }}"><button class="checkbox checked"
+                aria-label="Move task back to to-do">✓</button></form>
+        <div><b class="done">{{ item.task.title }}</b>
+            <p>Completed today - click the check to move it back.</p>
+        </div>
+    </div>{% else %}<p>Completed study items will appear here.</p>{% endfor %}
+</section>{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>{{ subject.subject_name }}</h1>
+        <p>{{ subject.credits }} credit hours · {{ subject.priority }} difficulty</p>
+    </div>
+    <div class="actions"><a class="button secondary" href="{{ url_for('subject.edit',subject_id=subject.id) }}">Edit
+            subject</a>
+        <form method="post" action="{{ url_for('subject.delete_subject',subject_id=subject.id) }}"><button
+                class="danger">Delete subject</button></form>
+    </div>
+</div>
+<section class="card">
+    <h2>Units and topics</h2>{% for unit in units %}<div class="unit">
+        <div class="plan"><b>{{ unit.unit_name }}</b>
+            <div class="actions"><span>{{ unit.completion }}% complete</span>
+                <form method="post" action="{{ url_for('subject.delete_unit',unit_id=unit.id) }}"><button
+                        class="danger">Delete unit</button></form>
+            </div>
+        </div>
+        <ul>{% for topic in unit.topics %}<li><span>{{ topic.topic_name }} <small>{{ topic.status }}</small></span>
+                <form method="post" action="{{ url_for('subject.delete_topic',topic_id=topic.id) }}"><button
+                        class="text-danger">Delete</button></form>
+            </li>{% else %}<li>No topics yet.</li>{% endfor %}</ul>
+        <form class="inline-form" method="post" action="{{ url_for('subject.add_topic',unit_id=unit.id) }}"><input
+                name="topic_name" placeholder="Add a topic"><button>Add topic</button></form>
+    </div>{% else %}<p>Add units to track progress within this subject.</p>{% endfor %}<form class="inline-form"
+        method="post" action="{{ url_for('subject.add_unit',subject_id=subject.id) }}"><input name="unit_name"
+            placeholder="New unit name" required><button>Add unit</button></form>
+</section>{% endblock %}

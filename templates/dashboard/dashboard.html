@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <p class="eyebrow">DASHBOARD</p>
+        <h1>Hello, {{ session.user_name.split(' ')[0] }}</h1>
+        <p>This is how your progress looks today.</p>
+    </div>
+    <form method="post" action="{{ url_for('planner.generate') }}"><button>Generate today's plan</button></form>
+</div>
+<section class="metrics">
+    <article><b>{{ summary.completion }}%</b><span>Semester progress</span></article>
+    <article><b>{{ side_data.today_done }}</b><span>Tasks done today</span></article>
+    <article><b>{{ summary.minutes }}</b><span>Weekly focus minutes</span></article>
+    <article><b>{{ summary.risk }}%</b><span>Subject risk</span></article>
+</section>
+<section class="grid two">
+    <article class="card">
+        <h2>Today's plan</h2>{% for item in plan %}<div class="plan"><b>{{ item.task.title }}</b><span>{{
+                item.suggested_minutes }} min</span></div>{% else %}<p>Generate today’s plan when you are ready to
+            focus.</p>{% endfor %}<a href="{{ url_for('planner.index') }}">Open today’s plan -></a>
+    </article>
+    <article class="card">
+        <h2>Keep your streak</h2>
+        <p>One focused session today makes your plan more accurate.</p><a class="button secondary"
+            href="{{ url_for('pomodoro.index') }}">Start 25-minute focus</a>
+    </article>
+</section>{% endblock %}

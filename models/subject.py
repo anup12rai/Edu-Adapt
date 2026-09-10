@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from . import db
 
 class Subject(db.Model):
@@ -14,3 +15,8 @@ class Subject(db.Model):
     priority = db.Column(db.String(20))
 
     units = db.relationship("Unit", backref="subject", lazy=True)
+=======
+from dataclasses import dataclass
+@dataclass
+class Subject: id: int; user_id: int; subject_name: str; credits: int = 0; priority: str = 'Medium'
+>>>>>>> 1650dd9 (eduadapt project)

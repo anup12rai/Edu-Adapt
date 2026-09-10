@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block content %}<h1>Reflections</h1>
+<section class="card">
+    <form method="post"><label>How are you feeling?<select name="mood">
+                <option>Focused</option>
+                <option>Motivated</option>
+                <option>Neutral</option>
+                <option>Stressed</option>
+                <option>Tired</option>
+            </select></label><label>Notes<textarea name="notes"
+                placeholder="What worked, what was difficult, and what will you try next?"></textarea></label><button>Save
+            reflection</button></form>
+</section>
+<section class="card">{% for item in items %}<div class="plan">
+        <div><b>{{ item.mood or 'Reflection' }}</b>
+            <p>{{ item.notes }}</p>
+        </div><span>{{ item.created_at }}</span>
+    </div>{% else %}<p>Your reflections will appear here.</p>{% endfor %}</section>{% endblock %}

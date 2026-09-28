@@ -1,9 +1,9 @@
 .app-shell aside>a.active {
     /* background: #eeecff; */
-    background-color: rgba(0, 0, 0, 0.09);
-    color: #111111;
+    background-color: rgba(15, 35, 213, 0.09);
+    color: #130bb5;
     border-radius: 7px;
-    box-shadow: inset 3px 0 #1f1f1f
+    box-shadow: inset 3px 0 #020284
 }
 
 .unit li {
@@ -21,7 +21,7 @@
 
 .done-section {
     margin-top: 18px;
-    background-color: rgb(226, 236, 251);
+    background-color: rgb(185, 251, 214);
 }
 
 

@@ -12,8 +12,11 @@
     <form method="post" action="{{ url_for('subject.import_tu_bca_4') }}"><button>Import semester</button></form>
 </section>
 <div class="grid three">{% for subject in subjects %}<a class="card subject"
-        href="{{ url_for('subject.details',subject_id=subject.id) }}"><span class="pill {{ subject.priority|lower }}">{{
-            subject.priority }}</span>
+        href="{{ url_for('subject.details',subject_id=subject.id) }}">
         <h2>{{ subject.subject_name }}</h2>
-        <p>{{ subject.credits }} credit hours</p>
+        <div style="display: flex; justify-content: space-between;align-items: center;">
+            <p>{{ subject.credits }} credit hours</p>
+        <span class="pill {{ subject.priority|lower }}">{{
+            subject.priority }}</span>
+        </div>
     </a>{% else %}<p>Import your semester or add your first custom subject.</p>{% endfor %}</div>{% endblock %}

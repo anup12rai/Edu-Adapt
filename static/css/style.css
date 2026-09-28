@@ -2,7 +2,7 @@
     --ink: #172033;
     --muted: #667085;
     --line: #e6eaf0;
-    --brand: #151515;
+    --brand: #0026a4;
     --soft: #f7f8fc;
     --danger: #c9364f;
 }
@@ -71,12 +71,13 @@ nav {
 h1 {
     font-size: 32px;
     line-height: 1.2;
+    font-weight: 500;
     margin: 0 0 8px
 }
 
 h2 {
     font-size: 18px;
-    margin: 0 0 14px
+    margin: 0 0 14px;
 }
 
 p {
@@ -260,8 +261,8 @@ textarea {
 }
 
 .done {
-    text-decoration: line-through;
-    color: var(--muted)
+    /* text-decoration: line-through; */
+    color: green;
 }
 
 .result {

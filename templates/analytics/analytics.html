@@ -12,14 +12,12 @@
         <thead>
             <tr>
                 <th>Subject</th>
-                <th>Completion</th>
                 <th>Risk</th>
                 <th>Recommendation</th>
             </tr>
         </thead>
         <tbody>{% for row in data.risks %}<tr>
                 <td>{{ row.subject_name }}</td>
-                <td>{{ row.completion|round|int }}%</td>
                 <td>{{ row.risk }}</td>
                 <td>{{ row.recommendation }}</td>
             </tr>{% else %}<tr>

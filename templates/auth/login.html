@@ -5,8 +5,11 @@
 
     <section class="auth">
         <div class="left-auth-content">
-            <img src="/static/img/eduadapt.png" alt="">
-            <p>EduAdapt - An Adaptive Academic Planning and Performance Analysis System</p>
+                  <div style="display: flex; align-items: center;">
+            <img src="/static/img/eduadapt-logo.png" alt="">
+            <span style="font-weight: bold; font-size: 40px; color:#0026a4; align-self:end;" >EduAdapt</span>
+        </div>
+        <p>EduAdapt - An Adaptive Academic Planning and Performance Analysis System</p>
         </div>
         <div
     class="auth-card auth2-card">
@@ -24,7 +27,7 @@
             </form>
     <p>New here? <a href="{{ url_for('auth.register_view') }}">Create an account</a></p>
 
-    <img src="{{url_for('static',filename='img/eduadapt.png')}}" alt="eduadapt logo">
+    <img src="{{url_for('static',filename='img/eduadapt-logo.png')}}" alt="eduadapt logo">
 </div>
     </section>
 

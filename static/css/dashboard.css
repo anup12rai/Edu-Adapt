@@ -28,7 +28,7 @@
     gap: 4px;
 }
 .app-shell aside>a:hover{
-    background-color: rgba(20, 20, 20, 0.047);
+    background-color: rgba(1, 13, 115, 0.13);
     border-radius: 7px;
 }
 

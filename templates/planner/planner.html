@@ -10,7 +10,7 @@
 <section class="card">
     <h2>To do</h2>{% for item in plan %}<div class="plan todo">
         <form method="post" action="{{ url_for('task.toggle',task_id=item.task.id) }}"><button class="checkbox"
-                aria-label="Complete task">✓</button></form>
+                aria-label="Complete task" title="Mark as Done"> <img src="{{url_for('static',filename='img/icons/pending.svg')}}" alt="" width="20"></button></form>
         <div><b>{{ item.task.title }}</b>
             <p>Expected study time: {{ item.suggested_minutes }} minutes · {{ item.task.priority }} priority</p>
         </div>
@@ -19,7 +19,7 @@
 <section class="card done-section">
     <h2>Done today</h2>{% for item in done %}<div class="plan todo">
         <form method="post" action="{{ url_for('task.toggle',task_id=item.task.id) }}"><button class="checkbox checked"
-                aria-label="Move task back to to-do">✓</button></form>
+                aria-label="Move task back to to-do"><img src="{{url_for('static',filename='img/icons/done.svg')}}" alt="" width="20" title="Undo Mark as Done"></button></form>
         <div><b class="done">{{ item.task.title }}</b>
             <p>Completed today - click the check to move it back.</p>
         </div>

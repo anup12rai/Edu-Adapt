@@ -3,5 +3,13 @@
     <form method="post"><label>Full name<input name="full_name" value="{{ user.full_name }}"
                 required></label><label>Email<input value="{{ user.email }}" disabled></label>
         <p>Member since {{ user.created_at.strftime('%d %b %Y') }}</p><button>Save changes</button>
-    </form><section class="danger-zone"><h2>Delete account</h2><p>This permanently removes your account, subjects, topics, plans, study sessions, and analytics. This cannot be undone.</p><form method="post" action="{{ url_for('profile.delete_account') }}" onsubmit="return confirm('Delete your account permanently? This cannot be undone.')"><button class="danger">Delete my account</button></form></section>
+    </form>
+    <section class="danger-zone">
+        <h2>Delete account</h2>
+        <p>This permanently removes your account, subjects, topics, plans, study sessions, and analytics. This cannot be
+            undone.</p>
+        <form method="post" action="{{ url_for('profile.delete_account') }}"
+            onsubmit="return confirm('Delete your account permanently? This cannot be undone.')"><button
+                class="danger">Delete my account</button></form>
+    </section>
 </section>{% endblock %}

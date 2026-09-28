@@ -1,1 +1,31 @@
-{% extends 'base.html' %}{% block title %}Sign in · Edu-Adapt{% endblock %}{% block content %}<section class="auth-card"><h1>Welcome back</h1><p>Sign in to focus your study time.</p><form method="post"><label>Email<input type="email" name="email" required autofocus></label><label>Password<input type="password" name="password" required></label><button>Sign in</button></form><p>New here? <a href="{{ url_for('auth.register_view') }}">Create an account</a></p></section>{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/auth.css')}}">
+{% endblock %}
+{% extends 'base.html' %}{% block title %}Sign in  Edu-Adapt{% endblock %}{% block content %}
+
+    <section class="auth">
+        <div class="left-auth-content">
+            <img src="/static/img/eduadapt.png" alt="">
+            <p>EduAdapt - An Adaptive Academic Planning and Performance Analysis System</p>
+        </div>
+        <div
+    class="auth-card auth2-card">
+    <h1>Welcome back</h1>
+    <p>Sign in to focus your study time.</p>
+    <form method="post">
+        <label>Email<input type="email" name="email" required autofocus placeholder="Enter Your Email"></label>
+        
+        <label>Password
+            <input
+                type="password" name="password" required placeholder="Enter Your Password"></label>
+                
+                <button>Sign in</button>
+            
+            </form>
+    <p>New here? <a href="{{ url_for('auth.register_view') }}">Create an account</a></p>
+
+    <img src="{{url_for('static',filename='img/eduadapt.png')}}" alt="eduadapt logo">
+</div>
+    </section>
+
+{% endblock %}

@@ -1,6 +1,8 @@
 .app-shell aside>a.active {
-    background: #eeecff;
+    /* background: #eeecff; */
+    background-color: rgba(0, 0, 0, 0.09);
     color: #111111;
+    border-radius: 7px;
     box-shadow: inset 3px 0 #1f1f1f
 }
 
@@ -21,3 +23,5 @@
     margin-top: 18px;
     background-color: rgb(226, 236, 251);
 }
+
+

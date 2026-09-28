@@ -1,1 +1,68 @@
 /* Authentication uses the shared design system in style.css. */
+
+.auth{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-auth-content{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.left-auth-content img{
+    width: 300px;
+}
+.left-auth-content p{
+    font-size: 24px;
+    color:rgb(0, 41, 131);
+
+}
+
+
+.auth2-card{
+    flex-grow: 1;
+}
+
+.auth-card form input{
+    outline: none;
+}
+
+.auth2-card img{
+    width: 60px;
+    align-self: flex-end;
+    
+}
+.auth2-card img:hover{
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+    .auth{
+    
+        flex-direction: column;
+
+    }
+
+    .left-auth-content{
+    align-items: center;
+    width: 100%;
+
+}
+
+.auth2-card{
+    width: 100%;
+}
+.left-auth-content img{
+    width: 40vw;
+}
+.left-auth-content p{
+    display: none;
+    font-size: 24px;
+    color:rgb(0, 41, 131);
+    font-weight: bold;
+
+}
+
+}

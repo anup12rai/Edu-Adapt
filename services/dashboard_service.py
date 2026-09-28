@@ -1,57 +1,3 @@
-<<<<<<< HEAD
-from services.analytics_service import (
-    get_task_statistics,
-    get_study_hours
-)
-
-from services.risk_service import get_user_risks
-
-from services.recommendation_service import (
-    generate_recommendations
-)
-
-from utils.helper import success_response
-
-
-def get_dashboard_data(user_id):
-    
-
-    task_stats = get_task_statistics(
-        user_id
-    )
-
-    study_hours = get_study_hours(
-        user_id
-    )
-
-    risk_result = get_user_risks(
-        user_id
-    )
-
-    risks = risk_result.get(
-        "data",
-        []
-    )
-
-    recommendation_result = generate_recommendations(
-        risks,
-        study_hours
-    )
-
-    return success_response(
-        "Dashboard data retrieved.",
-        {
-            "tasks": task_stats,
-            "study_hours": study_hours,
-            "risks": risks[:5],
-            "recommendations":
-                recommendation_result.get(
-                    "data",
-                    []
-                )
-        }
-    )
-=======
 from utils.db import query
 from algorithms.readiness import calculate
 from algorithms.risk_prediction import predict
@@ -67,4 +13,3 @@ def summary(user_id):
 def sidebar(user_id):
     active = query('SELECT subject_name, priority FROM subjects WHERE user_id=%s ORDER BY priority="High" DESC, created_at DESC LIMIT 1', (user_id,), one=True)
     return {'active_subject': active, 'today_done': query("SELECT COUNT(*) done FROM tasks WHERE user_id=%s AND status='Completed' AND due_date=CURDATE()", (user_id,), one=True)['done']}
->>>>>>> 1650dd9 (eduadapt project)

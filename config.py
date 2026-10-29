@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
+#in some cases, you may want to use a different config class for testing or development. You can create a separate class that inherits from Config and overrides the necessary attributes.
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'change-this-before-production')
